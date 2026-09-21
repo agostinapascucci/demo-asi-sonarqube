@@ -1,0 +1,32 @@
+{
+  "name": "demo-asi-sonarqube",
+  "version": "1.0.0",
+  "description": "Repositorio dedicado a realizar una demostración práctica de la integración de la herramiento SonarQube al Ciclo de Vida de Desarrollo de Software. Fines académicos.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node dist/index.js",
+    "build": "tsc",
+    "dev": "ts-node src/index.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/agostinapascucci/demo-asi-sonarqube.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/agostinapascucci/demo-asi-sonarqube/issues"
+  },
+  "homepage": "https://github.com/agostinapascucci/demo-asi-sonarqube#readme",
+  "dependencies": {
+    "express": "^5.2.1"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.6",
+    "@types/node": "^26.6.2",
+    "ts-node": "^10.9.2",
+    "typescript": "^7.0.2"
+  }
+}

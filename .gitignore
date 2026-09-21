@@ -1,0 +1,26 @@
+# Dependencias de Node
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Archivos de compilación de TypeScript
+dist/
+build/
+out/
+
+# Variables de entorno y secretos (Crítico para buenas prácticas de seguridad)
+.env
+.env.local
+.env.*.local
+
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# Archivos del sistema operativo
+.DS_Store
+Thumbs.db
+
+# Archivos temporales de SonarQube
+.scannerwork/
