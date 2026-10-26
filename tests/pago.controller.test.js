@@ -1,17 +1,8 @@
-import assert from 'node:assert/strict';
-import { test } from 'node:test';
-import { Request, Response } from 'express';
-import { procesarPago } from './pago.controller';
+const assert = require('node:assert/strict');
+const { test } = require('node:test');
+const { procesarPago } = require('../dist/controllers/pago.controller.js');
 
-type Pago = {
-    estado: string;
-    monto: number;
-    usuarioVip: boolean;
-    historialLimpio: boolean;
-    beca: boolean;
-};
-
-const crearPago = (overrides: Partial<Pago> = {}): Pago => ({
+const crearPago = (overrides = {}) => ({
     estado: 'PENDIENTE',
     monto: 0,
     usuarioVip: false,
@@ -20,28 +11,25 @@ const crearPago = (overrides: Partial<Pago> = {}): Pago => ({
     ...overrides,
 });
 
-const ejecutarControlador = (pagos?: Pago[] | null) => {
-    const logs: string[] = [];
+const ejecutarControlador = (pagos) => {
+    const logs = [];
     const respuesta = {
         statusCode: 0,
-        body: undefined as { message: string } | undefined,
-        status(statusCode: number) {
+        body: undefined,
+        status(statusCode) {
             respuesta.statusCode = statusCode;
             return respuesta;
         },
-        json(body: { message: string }) {
+        json(body) {
             respuesta.body = body;
             return respuesta;
         },
     };
     const logOriginal = console.log;
-    console.log = (...args: unknown[]) => logs.push(args.join(' '));
+    console.log = (...args) => logs.push(args.join(' '));
 
     try {
-        procesarPago(
-            { body: { pagos } } as Request,
-            respuesta as unknown as Response,
-        );
+        procesarPago({ body: { pagos } }, respuesta);
     } finally {
         console.log = logOriginal;
     }
