@@ -7,8 +7,8 @@
     "start": "node dist/index.js",
     "build": "tsc",
     "dev": "ts-node src/index.ts",
-    "test": "npm run build && node --test",
-    "test:coverage": "npm run build && c8 --reporter=lcov node --test"
+    "test": "npm run build && node --test dist/controllers/pago.controller.test.js",
+    "test:coverage": "npm run build && c8 --reporter=lcov node --test dist/controllers/pago.controller.test.js"
   },
   "repository": {
     "type": "git",
