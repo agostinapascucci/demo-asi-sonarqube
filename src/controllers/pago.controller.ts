@@ -1,5 +1,4 @@
 import { Request, Response } from 'express';
-import { exec } from 'node:child_process'; // Librería nativa para forzar vulnerabilidades (CWE-78)
 
 type Pago = {
     estado: string;
@@ -46,14 +45,6 @@ const procesarPagoIndividual = (pago: Pago) => {
 };
 
 export const procesarPago = (req: Request, res: Response) => {
-
-    // 2. VULNERABILIDAD CRÍTICA (Command Injection - CWE-78)
-    // El motor SAST detectará que 'req.body.userId' entra directo a una ejecución de consola.
-    const userId = req.body.userId;
-    exec("ping -c 4 " + userId, (error, stdout) => {
-        console.log(stdout);
-    });
-
     // 3. Procesamiento de pagos
     const datosPagos = req.body.pagos;
     if (datosPagos != null) {
