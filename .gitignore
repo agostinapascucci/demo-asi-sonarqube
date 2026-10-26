@@ -7,6 +7,7 @@ yarn-error.log
 dist/
 build/
 out/
+coverage/
 
 # Variables de entorno y secretos (Crítico para buenas prácticas de seguridad)
 .env

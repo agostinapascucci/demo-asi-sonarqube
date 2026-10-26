@@ -6,7 +6,9 @@
   "scripts": {
     "start": "node dist/index.js",
     "build": "tsc",
-    "dev": "ts-node src/index.ts"
+    "dev": "ts-node src/index.ts",
+    "test": "npm run build && node --test tests/pago.controller.test.js",
+    "test:coverage": "npm run build && c8 --reporter=lcov node --test tests/pago.controller.test.js"
   },
   "repository": {
     "type": "git",
@@ -26,6 +28,7 @@
   "devDependencies": {
     "@types/express": "^5.0.6",
     "@types/node": "^26.6.2",
+    "c8": "^12.0.0",
     "ts-node": "^10.9.2",
     "typescript": "^7.0.2"
   }
